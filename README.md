@@ -1,1 +1,1 @@
-# GrangerVARAnalyzer
+# GrangerScope
