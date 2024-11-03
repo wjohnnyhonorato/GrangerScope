@@ -24,7 +24,17 @@ O objetivo do GrangerScope é ajudar a identificar relações de precedencia tem
    pip install -r requirements.txt
 
 ## Exemplo de Uso
+    from statsmodels.tsa.ar_model import AutoReg
+    from tabulate import tabulate
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from statsmodels.tsa.api import VAR
+    from statsmodels.tsa.stattools import grangercausalitytests, adfuller, kpss
     import pandas as pd
+    import warnings
+    # Ignorar todos os warnings
+    warnings.filterwarnings("ignore")
+
     from grangerscope import GrangerScope  # Importe a classe
 
     # Suponha que df seja um DataFrame com as colunas 'x' e 'y'
@@ -36,7 +46,7 @@ O objetivo do GrangerScope é ajudar a identificar relações de precedencia tem
     # Defina o lag máximo desejado para a análise
     max_lag = 5
 
-    # Instancie e execute a análise com GrangerScope
+    # Instancie e execute a análise com GrangerScope, um relatório consolidado será exibido
     analyzer = GrangerScope(df, max_lag)
 
 ## Exemplo de Saída
