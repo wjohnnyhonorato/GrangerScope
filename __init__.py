@@ -1,1 +1,1 @@
-from .core import GrangerScope
+from .grangerscope_class import GrangerScope

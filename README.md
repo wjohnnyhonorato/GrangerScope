@@ -23,29 +23,30 @@ O objetivo do GrangerScope é ajudar a identificar relações de precedencia tem
    ```bash
    pip install -r requirements.txt
 
+3. Importe a classe GrangerScope  
+O arquivo que vai realizar a importação da classe precisa estar no mesmo nivel da pasta grangerscope
+   ```bash
+   from grangerscope import GrangerScope
+
 ## Exemplo de Uso
-    from statsmodels.tsa.ar_model import AutoReg
-    from tabulate import tabulate
     import numpy as np
-    import matplotlib.pyplot as plt
-    from statsmodels.tsa.api import VAR
-    from statsmodels.tsa.stattools import grangercausalitytests, adfuller, kpss
     import pandas as pd
-    import warnings
-    # Ignorar todos os warnings
-    warnings.filterwarnings("ignore")
 
-    from grangerscope import GrangerScope  # Importe a classe
+    # Criando um DataFrame exemplo com as colunas 'x' e 'y'
+    np.random.seed(42)
+    n = 150  # número de pontos da série
+    # Série X: uma sequência temporal com ruído
+    x = np.cumsum(np.random.normal(loc=0, scale=1, size=n))
+    # Série Y: depende dos valores passados de X mais um ruído adicional
+    y = [0] * n
+    for i in range(2, n):
+        y[i] = 0.5 * x[i - 1] + 0.3 * x[i - 2] + np.random.normal(0, 1)
+    # Criação do DataFrame
+    df = pd.DataFrame({'x': x, 'y': y})
 
-    # Suponha que df seja um DataFrame com as colunas 'x' e 'y'
-    df = pd.DataFrame({
-        'x': [...],  # Série temporal da variável x
-        'y': [...]   # Série temporal da variável y
-    })
 
     # Defina o lag máximo desejado para a análise
     max_lag = 5
-
     # Instancie e execute a análise com GrangerScope, um relatório consolidado será exibido
     analyzer = GrangerScope(df, max_lag)
 

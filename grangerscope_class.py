@@ -1,4 +1,18 @@
-class GarngerScope:
+# Imports necessários para o funcionamento da classe quando instanciada
+from statsmodels.tsa.ar_model import AutoReg
+from tabulate import tabulate
+import numpy as np
+import matplotlib.pyplot as plt
+from statsmodels.tsa.api import VAR
+from statsmodels.tsa.stattools import grangercausalitytests, kpss
+from statsmodels.tsa.stattools import adfuller
+import pandas as pd
+import warnings
+# Ignorar todos os warnings
+warnings.filterwarnings("ignore")
+
+
+class GrangerScope:
     """
     Analyzes causal relationships between two time series using stationarity tests (ADF, KPSS), 
     Granger causality, and Vector Autoregression (VAR). Provides automated reporting and visualization.
