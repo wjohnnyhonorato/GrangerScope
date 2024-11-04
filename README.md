@@ -57,6 +57,46 @@ Após a execução da análise, você verá:
 - Teste de Granger: Um relatório com os p-valores para cada lag testado, indicando quais lags são significativos.
 - Critérios de Informação: Gráficos com critérios AIC, BIC, HQIC e FPE para os modelos restritos e irrestritos, auxiliando na escolha do melhor lag para a análise causal.
 
+   ```plaintext 
+   RESULTADOS DA ANÁLISE DE GRANGER E LAG ÓTIMO
+   
+   Resultados dos Testes de Estacionaridade Iniciais (ADF e KPSS)
+   Série      ADF p-valor    KPSS p-valor  Estacionaridade
+   -------  -------------  --------------  -----------------
+   x             0.374183            0.01  Não Estacionária
+   y             0.303492            0.01  Não Estacionária
+
+   Número de diferenciações aplicadas para tornar as séries estacionárias: 1
+
+   Resultados do Teste de Granger (Lags Significativos)
+   Lag    p-valor F    p-valor Chi-Square
+   -----  -----------  --------------------
+      1  0.0228984             0.0201647
+      2  1.03577e-07           7.67136e-09
+      3  7.00358e-09           9.29781e-11
+      4  1.90265e-09           5.51498e-12
+      5  1.81332e-10           4.60367e-14
+
+   Lags Ótimos Baseados em Critérios de Informação (Apenas Lags Significativos)
+   Critério      Lag Ótimo    Lag Ajustado
+   ----------  -----------  --------------
+   AIC                   5               6
+   BIC                   2               3
+   HQIC                  5               6
+   FPE                   5               6
+
+
+<p align="center">
+  <img src="images\granger_test.png">
+</p>
+<p align="center">
+  <img src="images\criterios_informacao.png">
+</p>
+<p align="center">
+  <img src="images\fpe.png">
+</p>
+
+
 ## Métodos Principais
 
  - ``validate_lag``: Verifica se o lag máximo é adequado, considerando o tamanho do conjunto de dados.
@@ -67,3 +107,4 @@ Após a execução da análise, você verá:
 
 ## Contato
 Para perguntas ou sugestões, entre em contato com o desenvolvedor no william-johnny@hotmail.com.
+
